@@ -1,0 +1,15 @@
+{
+  "name": "ven-mir",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ven-mir - generado por el sistema multi-agente",
+  "main": "server.js",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "dependencies": {}
+}
