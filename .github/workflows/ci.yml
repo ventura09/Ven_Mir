@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Ejecutar pruebas (node:test, sin dependencias)
+        run: npm test
+      - name: Arranque en frio del servidor
+        run: |
+          node server.js &
+          SERVER_PID=$!
+          sleep 1
+          curl -fsS "http://127.0.0.1:3000/health"
+          kill $SERVER_PID
